@@ -71,7 +71,7 @@ class PlayerCharacter(arcade.Sprite):
         # Images from Kenney.nl's Asset Pack 3
         # main_path = ":resources:images/animated_characters/female_adventurer/femaleAdventurer"
         # main_path = ":resources:images/animated_characters/female_person/femalePerson"
-        main_path = ":resources:images/animated_characters/male_person/malePerson"
+        main_path = ":resources:images/animated_characters/zombie/zombie"
         # main_path = ":resources:images/animated_characters/male_adventurer/maleAdventurer"
         # main_path = ":resources:images/animated_characters/zombie/zombie"
         # main_path = ":resources:images/animated_characters/robot/robot"
@@ -195,6 +195,7 @@ class MyGame(arcade.Window):
         # Load sounds
         self.collect_coin_sound = arcade.load_sound(":resources:sounds/coin1.wav")
         self.jump_sound = arcade.load_sound(":resources:sounds/jump1.wav")
+        self.death_sound = arcade.load_sound(":resources:sounds/error1.wav")
         self.game_over = arcade.load_sound(":resources:sounds/gameover1.wav")
 
     def setup(self):
@@ -453,7 +454,11 @@ class MyGame(arcade.Window):
 
     def on_player_die(self):
 
+        arcade.play_sound(self.death_sound)
+
         # send logs
+
+        # reset the game
 
         self.setup()
 
