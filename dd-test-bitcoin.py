@@ -29,7 +29,7 @@ while True:
 
         for devise, deviseData in data["bpi"].items():
 
-            logger.info(f'{deviseData["rate_float"]}')
+            logger.info(f'{devise} {deviseData["rate_float"]}')
 
             api.Metric.send(
                 metric="money.bitcoin.value",
@@ -37,8 +37,7 @@ while True:
                 host="api.coindesk.com",
                 tags=[
                     deviseData["code"],
-                    deviseData["description"],
-                    data["time"]["updated"],
+                    deviseData["description"]
                 ],
             )
     else:
